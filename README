@@ -4,3 +4,12 @@ These are my modified device files for a clean CM9 installation. In this package
 - 2 different kernels
 
 If you wanna know more please refer to our official site: www.xmodteam.tk
+
+IMPORTANT
+---------
+In prebuilt there are 2 kernel:
+
+- zImage_old : working kernel (2.6.32)
+- zImage: new kernel 2.6.35 (not works touch i need to fix this) 
+
+Also modules are _old and not and related to kernel you want to use. Rename to ouse new or old kernel (delete_old)
