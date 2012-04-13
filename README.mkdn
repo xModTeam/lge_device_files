@@ -1,0 +1,56 @@
+CyanogenMod for LG P350
+=======================
+
+How to init repository
+----------------------
+
+You need to have your environment configured exatly like here: 
+
+   http://source.android.com/source/initializing.html 
+
+Next download a repo client (part "Installing Repo" of this link):
+
+   http://source.android.com/source/downloading.html
+
+After this steps you have everything configured and can initialize your repository for building CM for P350.
+
+First initialize local repository with my Mainfest - this will get you CM 7.2 without not needed devices (less to download) and with pecan avaible for build.
+
+    repo init -u git://github.com/pax0r/android.git -b gb-release-7.2
+
+Then sync up:
+
+    repo sync
+
+This may took few hours depending on your internet speed.
+
+You will get full CyanogenMod repo with P350 device folder (device/lge/pecan), ready to build CM for P350.
+
+How to build
+------------
+First you will need to get properiaty drivers from running device.
+This step assumes you have adb installed and configured - google for it if you don't, beacuse it is ultimate Android Dev tool and you REALY need it if you want to do something ;)
+
+Connect your device via USB and do the following commands (from the root of your CM repository):
+
+    cd device/lge/pecan
+    ./extract-files.sh
+    cd ../../..
+
+And start the build:
+
+    . build/envsetup.sh && brunch pecan
+
+Now Andorid is building. Now you need to wait quite a long time (depending on your hardware) for the message:
+
+    Package complete: /home/pax0r/android/system/out/target/product/pecan/update-cm-7.2.0-RC0-SwiftMe-KANG-signed.zip
+
+Now in folder out/target/pecan/ you will find flashable zip called update-cm-7.2.0-RC0-SwiftMe-KANG-signed.zip with your built ROM. Flash it and enjoy! Voila!
+
+For more info check:
+--------------------
+
+* [CyanogenMod Wiki](http://wiki.cyanogenmod.com/)
+* [CyanogendMod README](https://github.com/CyanogenMod/android) (and everything on CyanogenMod github)
+* [Android Open Source Project](http://source.android.com/)
+* [LG P350 Dev thread](http://forum.xda-developers.com/showthread.php?t=1446841)
