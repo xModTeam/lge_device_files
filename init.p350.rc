@@ -15,10 +15,7 @@ on boot
   chmod 0666 /data/amit/AMI306_Config.ini
   chmod 0666 /data/amit/AMI306_Config2.ini
 
-  chown compass system /sys/bus/i2c/drivers/proximity_gp2ap/4-0044/enable
-  chmod 0660 /sys/bus/i2c/drivers/proximity_gp2ap/4-0044/enable
-
-
+ 
 service ami304d /system/bin/ami304d
     class main
     user compass
