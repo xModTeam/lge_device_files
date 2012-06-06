@@ -105,6 +105,7 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/etc/flex/flex.xml:system/etc/flex/flex.xml \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/atd:system/bin/atd
 
+
 ## Audio
 
 PRODUCT_COPY_FILES += \\
@@ -113,7 +114,7 @@ PRODUCT_COPY_FILES += \\
 ## HAL
 PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7k.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/hw/sensors.muscat.so:system/lib/hw/sensors.muscat.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/hw/sensors.pecan.so:system/lib/hw/sensors.pecan.so
 
 ## EGL
 PRODUCT_COPY_FILES += \\
@@ -163,7 +164,7 @@ PRODUCT_COPY_FILES += \\
 
 ## BT
 PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/etc/firmware/BCM43291A0_003.001.013.0141.0153.hcd:system/etc/firmware/BCM43291A0_003.001.013.0141.0153.hcd
+    vendor/__VENDOR__/__DEVICE__/proprietary/etc/firmware/BCM43291A0_003.001.013.0060.Pecan.hcd:system/etc/firmware/BCM43291A0_003.001.013.0060.Pecan.hcd
 
 ## WiFi
 PRODUCT_COPY_FILES += \\

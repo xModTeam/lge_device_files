@@ -20,4 +20,4 @@ PRODUCT_RELEASE_NAME := pecan
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := pecan
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=maguro BUILD_ID=ITL41D BUILD_FINGERPRINT=google/yakju/maguro:4.0.1/ITL41D/223971:user/release-keys
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=pecan BUILD_ID=ITL41D BUILD_FINGERPRINT=lge/pecan/pecan:4.0.4/ITL41D/223971:user/release-keys
