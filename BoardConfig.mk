@@ -103,6 +103,9 @@ BOARD_KERNEL_BASE := 0x02808000
 BOARD_KERNEL_CMDLINE := mem=215M console=ttyMSM2,115200n8 androidboot.hardware=pecan
 BOARD_PAGE_SIZE := 0x00000800
 
+# Touch screen compatibility for ICS
+BOARD_USE_LEGACY_TOUCHSCREEN := true
+
 # # cat /proc/mtd
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "boot"
