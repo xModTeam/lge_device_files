@@ -1,31 +1,44 @@
 # Prepare for new BootAnimation
 TARGET_BOOTANIMATION_NAME := vertical-240x320
 
+## Specify phone tech before including full_phone
+$(call inherit-product, vendor/cm/config/gsm.mk)
+
 # Include GSM stuff
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
-# Inherit device configuration for p350.
-$(call inherit-product, device/lge/p350/p350.mk)
+# Inherit from those products. Most specific first
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # Inherit some common cyanogenmod stuff.
 $(call inherit-product, vendor/cm/config/common_mini_phone.mk)
 
+# Inherit device configuration
+$(call inherit-product, device/lge/pecan/pecan.mk)
+
 # Include FM-Radio stuff
 #$(call inherit-product, vendor/cyanogen/products/bcm_fm_radio.mk)
 
-PRODUCT_NAME := cm_p350
+PRODUCT_NAME := pecan
 PRODUCT_BRAND := lge
-PRODUCT_DEVICE := p350
+PRODUCT_DEVICE := pecan
 PRODUCT_MODEL := LG-P350
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_CHARACTERISTICS := phone
 
+# Device identifier. This must come after all inclusions
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=lge_p350 \
-    BUILD_FINGERPRINT="lge/pecan/pecan:2.3.3/GRI40/LG-P350-V10c.19C11F164C:user/release-keys" \
-    PRIVATE_BUILD_DESC="pecan-user 2.3.3 GRI40 LG-P350-V10c.19C11F164C release-keys"
+    PRODUCT_NAME=lge_pecan \
+    BUILD_FINGERPRINT="lge/pecan/pecan:2.3.7/GRI40/19C11F164C:user/release-keys" \
+    PRIVATE_BUILD_DESC="pecan-user 2.3.7 GRI40 19C11F164C release-keys"
 
 # Release name and versioning
 PRODUCT_RELEASE_NAME := OptimusMe
 PRODUCT_VERSION_DEVICE_SPECIFIC :=
 -include vendor/cyanogen/products/common_versions.mk
+
+
+
