@@ -94,8 +94,8 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    device/lge/pecan/prebuilt/lib/hw/audio.primary.msm7625.so:system/lib/hw/audio.primary.msm7625.so \
-    device/lge/pecan/prebuilt/lib/hw/audio_policy.msm7625.so:system/lib/hw/audio_policy.msm7625.so \
+    device/lge/pecan/prebuilt/lib/hw/audio.primary.pecan.so:system/lib/hw/audio.primary.pecan.so \
+    device/lge/pecan/prebuilt/lib/hw/audio_policy.pecan.so:system/lib/hw/audio_policy.pecan.so \
     vendor/lge/pecan/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so
 
 # Kernel modules
