@@ -11,7 +11,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/pecan_keypad.kl:system/usr/keylayout/pecan_keypad.kl \
     $(LOCAL_PATH)/configs/pecan_keypad.kcm.bin:system/usr/keychars/pecan_keypad.kcm.bin \
     $(LOCAL_PATH)/configs/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc \
-    $(LOCAL_PATH)/prebuilt/init.qcom.sh:root/init.qcom.sh \
     $(LOCAL_PATH)/configs/touch_mcs7000.idc:system/usr/idc/touch_mcs7000.idc \
     $(LOCAL_PATH)/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl
@@ -25,6 +24,11 @@ PRODUCT_COPY_FILES += \
 # BT
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
+
+# p350 init
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.p350.rc:root/init.p350.rc \
+    $(LOCAL_PATH)/ueventd.p350.rc:root/ueventd.p350.rc
 
 # Audio
 PRODUCT_PACKAGES += \
