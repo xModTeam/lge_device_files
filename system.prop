@@ -13,14 +13,17 @@ persist.rild.nitz_short_ons_0=
 persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
-
 ro.telephony.call_ring.multiple=false
 ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
 mobiledata.interfaces=rmnet0,rmnet1,rmnet2
+ro.telephony.call_ring.delay=3000
 
 ro.bt.bdaddr_path=/data/misc/bd_addr
 
-persist.sys.usb.config=mass_storage,adb
+# USB
+persist.sys.usb.config=mass_storage
+sys.usb.config=mass_storage
+persist.service.adb.enable=1
 
 ro.opengles.version=131072
 
@@ -29,7 +32,31 @@ ro.sf.lcd_density=120
 # Saves power when phone is sleep
 pm.sleep_mode=1
 
-# Allows your wifi to scan less, saving more battery
+# Graphics and performance
+ro.media.dec.jpeg.memcap=20000000
+view.fading_edge_length=8
+view.touch_slop=15
+view.minimum_fling_velocity=25
+view.scroll_friction=0.008
+persist.sys.use_dithering=1
+persist.sys.purgeable_assets=1
+
+# System
+dalvik.vm.heapsize=32m
+ro.compcache.default=26
+sys.checkfs.fat=false
+ro.vold.umsdirtyratio=20
+dalvik.vm.dexopt-data-only=1
+dalvik.vm.execution-mode=int:jit
+debug.sf.hw=0
+debug.camcorder.disablemeta=1
+ro.config.disable_hw_accel=true
+dalvik.vm.lockprof.threshold=500
+dalvik.vm.dexopt-flags=m=y
+dalvik.vm.dexopt-data-only=1
+
+# wifi
+wifi.interface=wlan0
 wifi.supplicant_scan_interval=150
 
 # Helps Scrolling Responsiveness
