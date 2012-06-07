@@ -5,15 +5,6 @@ $(call inherit-product-if-exists, vendor/lge/p350/p350-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/p350/overlay
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/lge/p350/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
 # configs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/pecan_keypad.kl:system/usr/keylayout/pecan_keypad.kl \
@@ -25,7 +16,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nvram.txt:system/etc/wl/nvram.txt \
     $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/prebuilt/wireless.ko:system/lib/modules/wireless.ko
 
 # Audio
 PRODUCT_PACKAGES += \
