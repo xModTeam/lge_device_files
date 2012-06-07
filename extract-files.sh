@@ -1,5 +1,6 @@
 #!/bin/sh
 
+<<<<<<< HEAD
 # Copyright (C) 2011 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -110,3 +111,20 @@ adb pull /system/etc/firmware/BCM43291A0_003.001.013.0060.Pecan.hcd ../../../ven
 ## Wifi
 adb pull /system/etc/wl/rtecdc-apsta.bin ../../../vendor/$VENDOR/$DEVICE/proprietary/etc/wl/
 adb pull /system/etc/wl/rtecdc.bin ../../../vendor/$VENDOR/$DEVICE/proprietary/etc/wl/
+=======
+VENDOR=lge
+DEVICE=p350
+
+BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
+rm -rf $BASE/*
+
+for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
+    DIR=`dirname $FILE`
+    if [ ! -d $BASE/$DIR ]; then
+        mkdir -p $BASE/$DIR
+    fi
+    adb pull /system/$FILE $BASE/$FILE
+done
+
+./setup-makefiles.sh
+>>>>>>> 16339b1b4b88630b670848c9b5cf03093338aeb5

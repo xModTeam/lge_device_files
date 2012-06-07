@@ -14,11 +14,13 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
 mobiledata.interfaces=rmnet0,rmnet1,rmnet2
 
+ro.bt.bdaddr_path=/data/misc/bd_addr
+
 persist.sys.usb.config=mass_storage,adb
 
 ro.opengles.version=131072
 
-ro.sf.lcd_density=160
+ro.sf.lcd_density=120
 
 Allows the phone to sleep better
 ro.ril.disable.power.collapse=1
