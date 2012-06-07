@@ -13,7 +13,6 @@ lib/libmmgsdilib.so
 lib/libril-qcril-hook-oem.so
 lib/libdsm.so
 lib/liboncrpc.so
-lib/libril-qc-qmi-1.so
 lib/libnv.so
 lib/libauth.so
 lib/libril.so
@@ -31,7 +30,6 @@ lib/libdll.so
 lib/libbcmwl.so
 lib/libwmsts.so
 lib/libdsutils.so
-lib/libidl.so
 lib/liblgdrm.so
 lib/libsnd.so
 
@@ -45,7 +43,7 @@ lib/libmmjpeg.so
 lib/libmmipl.so
 
 ## BT & WiFi
-etc/firmware/BCM4325D1_004.002.004.0218.0248.hcd
+etc/firmware/BCM43291A0_003.001.013.0060.Pecan.hcd
 etc/wl/rtecdc.bin
 etc/wl/rtecdc-apsta.bin
 
