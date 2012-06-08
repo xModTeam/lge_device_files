@@ -38,7 +38,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Release name and versioning
 PRODUCT_RELEASE_NAME := OptimusMe
 PRODUCT_VERSION_DEVICE_SPECIFIC :=
--include vendor/cyanogen/products/common_versions.mk
+
 
 
 
