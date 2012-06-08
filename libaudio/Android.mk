@@ -44,7 +44,7 @@ LOCAL_STATIC_LIBRARIES := \
     libmedia_helper  \
     libaudiohw_legacy
 
-LOCAL_MODULE := audio.primary.p350
+LOCAL_MODULE := audio.primary.pecan
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 
