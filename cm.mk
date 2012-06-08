@@ -35,10 +35,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="lge/pecan/pecan:2.3.7/GRI40/19C11F164C:user/release-keys" \
     PRIVATE_BUILD_DESC="pecan-user 2.3.7 GRI40 19C11F164C release-keys"
 
-# Release name and versioning
-PRODUCT_RELEASE_NAME := OptimusMe
-PRODUCT_VERSION_DEVICE_SPECIFIC :=
--include vendor/cyanogen/products/common_versions.mk
-
-
+PRODUCT_NAME := cm_pecan
+PRODUCT_RELEASE_NAME := pecan
+include vendor/cyanogen/products/common_versions.mk
 
