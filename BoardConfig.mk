@@ -82,6 +82,9 @@ BOARD_EGL_CFG := device/lge/pecan/configs/egl.cfg
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 
+#Nedeed for LGPECAN sensors 
+COMMON_GLOBAL_CFLAGS += -DUSE_LGE_ALS_DUMMY
+
 # WiFI
 WPA_SUPPLICANT_VERSION := VER_0_6_X
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
@@ -92,6 +95,9 @@ WIFI_DRIVER_MODULE_NAME := wireless
 WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
 WIFI_DRIVER_FW_AP_PATH := "/system/etc/wl/rtecdc-apsta.bin"
 WIFI_DRIVER_HAS_LGE_SOFTAP := true
+
+#Prepare for new BootAnimation
+TARGET_BOOTANIMATION_NAME := vertical-240x320
 
 #recovery
 BOARD_LDPI_RECOVERY := true
