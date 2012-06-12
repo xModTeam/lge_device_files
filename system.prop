@@ -20,10 +20,7 @@ ro.telephony.call_ring.delay=3000
 
 ro.bt.bdaddr_path=/data/misc/bd_addr
 
-# USB
-persist.sys.usb.config=mass_storage
-sys.usb.config=mass_storage
-persist.service.adb.enable=1
+persist.sys.usb.config=mass_storage,adb
 
 ro.opengles.version=131072
 
