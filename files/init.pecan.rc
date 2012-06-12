@@ -12,6 +12,8 @@ on boot
     mkdir /data/amit 0777 ami304d ami304d
     chmod 0666 /data/amit/AMI306_Config.ini
 
+    write /sys/class/graphics/fb0/state 1
+
     mkdir /data/radio 0770 radio radio
 
 ## LGE's bluetooth stuff
