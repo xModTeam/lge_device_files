@@ -69,7 +69,6 @@ HTTP := chrome
 # USB mass storage
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/pecan/netd/UsbController.cpp
-BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
 # RADIO
