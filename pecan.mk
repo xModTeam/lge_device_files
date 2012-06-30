@@ -101,8 +101,7 @@ PRODUCT_COPY_FILES += \
 
 # Kernel modules
 PRODUCT_COPY_FILES += \
-    device/lge/pecan/prebuilt/tun.ko:system/lib/modules/tun.ko
-
+    device/lge/pecan/prebuilt/tun.ko:system/lib/modules/tun.ko 
 # Touch and IDC
 PRODUCT_COPY_FILES += \
     device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
