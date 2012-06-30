@@ -99,6 +99,7 @@ WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/s
 WIFI_DRIVER_MODULE_NAME := wireless
 WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
 WIFI_DRIVER_FW_AP_PATH := "/system/etc/wl/rtecdc-apsta.bin"
+BOARD_WEXT_NO_COMBO_SCAN := true
 WIFI_DRIVER_HAS_LGE_SOFTAP := true
 
 #Prepare for new BootAnimation
