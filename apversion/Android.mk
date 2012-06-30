@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2011 The Android Open Source Project
+# Copyright (C) 2012 The CyanogenMod project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +11,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),pecan)
-include $(call first-makefiles-under,$(call my-dir))
-endif
-#  include $(call all-named-subdir-makefiles, recovery gadget_id hwaddrs libcopybit netd bdaddr_read)
-#endif
+
+LOCAL_PATH:= $(call my-dir)
+include $(CLEAR_VARS)
+
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_SRC_FILES := apversion.c
+
+LOCAL_PRELINK_MODULE := false
+LOCAL_SHARED_LIBRARIES := libcutils
+LOCAL_MODULE := lgapversion
+
+include $(BUILD_EXECUTABLE)

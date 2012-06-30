@@ -1,4 +1,4 @@
-import init.pecan.usb.rc
+import init.buzz.usb.rc
 
 on fs
     export EXTERNAL_STORAGE /mnt/sdcard

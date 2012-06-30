@@ -84,6 +84,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/pecan/files/init.pecan.rc:root/init.pecan.rc \
     device/lge/pecan/files/ueventd.pecan.rc:root/ueventd.pecan.rc \
+    device/lge/pecan/files/init.pecan.usb.rc:root/init.pecan.usb.rc \
     device/lge/pecan/files/init.lge.hidden_reset.sh:root/init.lge.hidden_reset.sh
 
 # Wifi
@@ -94,20 +95,19 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    device/lge/pecan/prebuilt/lib/hw/audio.primary.msm7625.so:system/lib/hw/audio.primary.msm7625.so \
-    device/lge/pecan/prebuilt/lib/hw/audio_policy.msm7625.so:system/lib/hw/audio_policy.msm7625.so \
+    device/lge/pecan/prebuilt/lib/hw/audio.primary.pecan.so:system/lib/hw/audio.primary.pecan.so \
+    device/lge/pecan/prebuilt/lib/hw/audio_policy.pecan.so:system/lib/hw/audio_policy.pecan.so \
     vendor/lge/pecan/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so
 
 # Kernel modules
 PRODUCT_COPY_FILES += \
-    device/lge/pecan/prebuilt/tun.ko:system/lib/modules/tun.ko
-
+    device/lge/pecan/prebuilt/tun.ko:system/lib/modules/tun.ko 
 # Touch and IDC
 PRODUCT_COPY_FILES += \
     device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     device/lge/pecan/configs/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/lge/pecan/configs/touch_mcs6000.kl:system/usr/keylayout/touch_mcs6000.kl \
-    device/lge/pecan/configs/keychars/touch_mcs6000.kcm.bin:system/usr/keychars/touch_mcs6000.kcm.bin \
+    device/lge/pecan/configs/touch_mcs7000.kl:system/usr/keylayout/touch_mcs7000.kl \
+    device/lge/pecan/configs/keychars/touch_mcs7000.kcm.bin:system/usr/keychars/touch_mcs7000.kcm.bin \
     device/lge/pecan/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     device/lge/pecan/configs/idc/qwerty.idc:system/usr/idc/qwerty.idc \
     device/lge/pecan/configs/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
@@ -116,8 +116,7 @@ PRODUCT_COPY_FILES += \
     device/lge/pecan/configs/idc/touchscreen-keypad.idc:system/usr/idc/touchscreen-keypad.idc \
     device/lge/pecan/configs/idc/msm_touchscreen.idc:system/usr/idc/msm_touchscreen.idc \
     device/lge/pecan/configs/idc/melfas-touchscreen.idc:system/usr/idc/melfas-touchscreen.idc \
-    device/lge/pecan/configs/idc/touchscreen-keypad.idc:system/usr/idc/touchscreen-keypad.idc \
-    device/lge/pecan/configs/idc/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc 
+    device/lge/pecan/configs/idc/touch_mcs7000.idc:system/usr/idc/touch_mcs7000.idc 
 
 # BT startup
 PRODUCT_COPY_FILES += \

@@ -30,7 +30,7 @@ TARGET_OTA_ASSERT_DEVICE := p350,pecan
 
 # Target information
 TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := false
+TARGET_NO_RADIOIMAGE := true
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_NO_RGBX_8888 := true
 BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
@@ -42,7 +42,7 @@ TARGET_OTA_ASSERT_DEVICE := pecan
 # Audio & Bluetooth
 TARGET_PROVIDES_LIBAUDIO := true
 BOARD_COMBO_DEVICE_SUPPORTED := true
-BOARD_USES_AUDIO_LEGACY := true
+BOARD_USES_AUDIO_LEGACY := false
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
@@ -69,7 +69,6 @@ HTTP := chrome
 # USB mass storage
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/pecan/netd/UsbController.cpp
-BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
 # RADIO
