@@ -67,10 +67,8 @@ JS_ENGINE := v8
 HTTP := chrome
 
 # USB mass storage
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/pecan/netd/UsbController.cpp
-BOARD_HAS_SDCARD_INTERNAL := true
-BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
 # ICS Stuff 
 BOARD_HAS_NO_SELECT_BUTTON := true
