@@ -21,6 +21,7 @@ $(call inherit-product-if-exists, vendor/lge/pecan/pecan-vendor.mk)
 PRODUCT_NAME := LG_p350
 PRODUCT_DEVICE := pecan
 PRODUCT_MODEL := LG Optimus ME
+PRODUCT_MANUFACTURER := LGE
 
 # Graphics 
 PRODUCT_PACKAGES += \
@@ -54,7 +55,7 @@ PRODUCT_PACKAGES += \
     bash \
     dexpreopt 
     #gps.pecan 
-    #lights.pecan \
+    lights.pecan \
 
 PRODUCT_LOCALES := en_GB
 
