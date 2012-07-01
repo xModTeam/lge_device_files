@@ -20,6 +20,7 @@ BOARD_USE_FROYO_LIBCAMERA := true
 
 # Arch related defines
 TARGET_BOARD_PLATFORM := msm7k
+ARCH_ARM_HAVE_VFP := true
 TARGET_ARCH_VARIANT := armv6-vfp
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
