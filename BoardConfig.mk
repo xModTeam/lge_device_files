@@ -38,7 +38,18 @@ TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_USES_OLD_LIBSENSORS_HAL:=true
 TARGET_OTA_ASSERT_DEVICE := pecan
-TARGET_PROVIDES_LIBLIGHTS := true
+
+# Enable OpenGL Hardware Acceleration
+USE_OPENGL_RENDERER := true
+USE_OPENGL_RENDERER := true
+TARGET_USE_OVERLAY := false
+TARGET_HAVE_BYPASS := false
+TARGET_USES_C2D_COMPOSITION := false
+TARGET_USES_GENLOCK := true
+TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
+BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
+BOARD_EGL_CFG := device/lge/pecan/configs/egl.cfg
+BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 
 # Audio & Bluetooth
 TARGET_PROVIDES_LIBAUDIO := true
@@ -74,8 +85,6 @@ BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
 # ICS Stuff 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# Graphics
-BOARD_EGL_CFG := device/lge/pecan/configs/egl.cfg
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
