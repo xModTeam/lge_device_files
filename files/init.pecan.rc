@@ -1,142 +1,266 @@
-import init.pecan.usb.rc
+import init.qcom.usb.rc
 
-on fs
-    export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt 0775 root system
-    mkdir /mnt/sdcard 0000 system system
-    # for backwards compatibility
-    symlink /mnt/sdcard /sdcard
+on early-boot
+# set RLIMIT_MEMLOCK to 64MB
+  setrlimit 8 67108864 67108864
 
-on boot-pause
-    exec sbin/chargerlogo
+
+on early-init
+  mkdir /system
+  mkdir /data 0771 system system
+  mkdir /cache 0771 system cache
+  mkdir /mnt/sdcard 0000 system system
+  mkdir /sd-ext 0771 system system
+
+
+on init
+
+# setup the global environment
+  export EXTERNAL_STORAGE /mnt/sdcard
+  export SD_EXT_DIRECTORY /sd-ext
+  export DOWNLOAD_CACHE /cache/download
+
+# Backwards Compat - XXX: Going away in G*
+  symlink /mnt/sdcard /sdcard
+
+# Add permissions for camera access
+  chmod 0666 /dev/msm_camera/config0
+  chmod 0666 /dev/msm_camera/control0
+  chmod 0666 /dev/msm_camera/frame0
+  chmod 0666 /dev/msm_camera/pic0
+
+# Define the memory thresholds at which the above process classes will
+# be killed.  These numbers are in pages (4k).
+  setprop ro.FOREGROUND_APP_MEM 1536
+  setprop ro.VISIBLE_APP_MEM 2048
+  setprop ro.SECONDARY_SERVER_MEM 4096
+  setprop ro.BACKUP_APP_MEM 4096
+  setprop ro.HOME_APP_MEM 4096
+  setprop ro.HIDDEN_APP_MEM 5120
+  setprop ro.CONTENT_PROVIDER_MEM 5632
+  setprop ro.EMPTY_APP_MEM 6144
+
+# Import Froyo LMK settings due to its less aggressive nature
+  write /sys/module/lowmemorykiller/parameters/minfree 1536,2048,4096,5120,5632,6144
+# Enable low memory killer to check file pages
+  write /sys/module/lowmemorykiller/parameters/minfile 0,0,0,5120,5632,6144
+  write /sys/module/lowmemorykiller/parameters/check_filepages 1
+
+# fix for enropy service and some other that failed
+  chmod 0755 /data/system/appwidgets.xml
+  chmod 0755 /data/system/entropy.dat
+  chmod 0755 /data/system/wallpaper_info.xml
+
+
+
+on post-fs
+
+# nv
+  mkdir /data/nv
+  chown system system /data/nv
+  chmod 0711 /data/nv
+
+  mkdir /data/local/download 0771 system cache
+  mkdir /cache/download 0771 system cache
+
+# wifi
+  chmod 0777 /data/misc/wifi/config_mac
+  mkdir /data/audioprop 0777 system system
+  mkdir /data/misc/wifi/sockets 0770 wifi wifi
+  setprop wifi.supplicant_scan_interval 20
+  setprop wifi.interface wlan0
+  mkdir /data/misc/dhcp 0777 system system
+
+
+on post-fs-data
+
+# wifi
+  mkdir /data/misc/wifi 0770 wifi wifi
+  mkdir /data/misc/wifi/sockets 0770 wifi wifi
+  mkdir /data/misc/dhcp 0770 dhcp dhcp
+  chown dhcp dhcp /data/misc/dhcp
+
+
+# last line for post-fs-data
+  setprop vold.post_fs_data_done 1
+
+
+
 
 on boot
-    mkdir /data/amit 0777 ami304d ami304d
-    chmod 0666 /data/amit/AMI306_Config.ini
 
-    write /sys/class/graphics/fb0/state 1
+# radio
+  mkdir /data/radio 0770 radio radio
+  chmod 2770 /data/radio
 
-    mkdir /data/radio 0770 radio radio
+# liblights
+  chown system system /sys/class/leds/green/brightness
+  chown system system /sys/class/leds/green/blink
+  chown system system /sys/class/leds/amber/brightness
+  chown system system /sys/class/leds/amber/blink
+  chown system system /sys/class/leds/button-backlight/brightness
+  chown system system /sys/class/leds/flashlight/brightness
+  chown system system /sys/class/leds/lcd-backlight/brightness
+  chown system system /sys/class/leds/keyboard-backlight/brightness
 
-## LGE's bluetooth stuff
-# bluetooth permissions
-    chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /dev/ttyHS0
-    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chmod 0660 /sys/class/rfkill/rfkill0/type
+# wifi
+  mkdir /data/misc 01771 system misc
+  mkdir /data/misc/wifi 0770 system wifi
+  mkdir /data/misc/wifi/sockets
+  chmod 770 /data/misc/wifi/sockets
+  mkdir /data/misc/dhcp 0770 dhcp dhcp
+  chown dhcp dhcp /data/misc/dhcp
+  mkdir /data/system 0775 system system
 
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    write /sys/class/rfkill/rfkill0/state 0
+# bluetooth
+  chmod 0660 /dev/ttyHS0
+  chown bluetooth bluetooth /dev/ttyHS0
+  chown bluetooth bluetooth /proc/bluetooth/sleep/proto
+  chmod 0660 /sys/class/rfkill/rfkill0/state
+  chmod 0660 /sys/class/rfkill/rfkill0/type
 
-# +++ BRCM +++
-# Make sure the property critical to Bluetooth functionality to be reserved by creating while booting up.
-    setprop service.brcm.bt.srv_active 0
-	setprop service.brcm.bt.hcid_active 0
-	setprop sys.settings_secure_version 0
-# --- BRCM ---
-### End of LGE bluetooth
+  chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+  chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+  write /sys/class/rfkill/rfkill0/state 0
 
-## ERS
-    mkdir /data/data/com.lge.ers
-    mkdir /data/data/com.lge.ers/android
-    mkdir /data/data/com.lge.ers/kernel
-    mkdir /data/data/com.lge.ers/arm9
-    chmod 0777 /data/data/com.lge.ers/android
-    chmod 0777 /data/data/com.lge.ers/kernel
-    chmod 0777 /data/data/com.lge.ers/arm9
+# Fast dormancy
+  setprop ro.ril.fast.dormancy.rule 1
+  setprop ro.ril.fd.scron.timeout 4
+  setprop ro.ril.fd.scroff.timeout 3
 
-## VIBRATOR
-    chmod 0666 /sys/class/timed_output/vibrator/amp
-## SENSOR
-	chown system system /dev/ami304
-	chmod 0666 dev/ami304
-	chown system system /dev/ami304daemon
-	chmod 0666 dev/ami304daemon
-	chown system system /dev/ami304hal
-	chmod 0666 dev/ami304hal
-	mkdir /data/amit 0770 ami304d ami304d
-	chown system system /dev/KR3DH
-	chmod 0666 /dev/KR3DH
-	chown system system /dev/KR3DM
-	chmod 0666 /dev/KR3DM	
-## PROXIMITY SENSOR
-	chmod 0666 /sys/bus/i2c/drivers/proximity_gp2ap/4-0044/enable
+# Wakelock debug
+  write /sys/module/wakelock/parameters/debug_mask 7
 
-# WIFI
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    setprop wifi.supplicant_scan_interval 20
-    setprop wifi.interface wlan0
-    mkdir /data/misc/dhcp 0777 system system
+on fs
+
+# framebuffer permission for copybit
+  chmod 0666 /dev/graphics/fb0
+
+
+
+service chargerlogo /charger
+    class charger
+    user root
+
 
 service qmuxd /system/bin/qmuxd
+    class core
     user radio
-    group radio
-
-service ami304d /system/bin/ami304d
-    user compass
-    group system
+    group radio audio inet bluetooth
 
 service hciattach /system/bin/sh /system/bin/init.qcom.bt.sh
+    class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
 
-# Collect ramconsole data
-	copy /proc/last_kmsg /data/dontpanic/last_kmsg
-	chown root log /data/dontpanic/last_kmsg
-	chmod 0640 /data/dontpanic/last_kmsg
-
-# LGE_CHANGE_S suntae.joo@lge.com 2010-07-14
-# create logging directory
-	mkdir /data/logger 0771 system system
-# LGE_CHANGE_E suntae.joo@lge.com 2010-07-14
-## Hidden reset for the kernel interface
-   chmod 0666 /sys/module/lge_handle_panic/parameters/hidden_reset_enable
-on property:ro.build.type=user
-	write /sys/module/lge_handle_panic/parameters/hidden_reset_enable 1
-
-on property:init.svc.hcid=running
-	write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
-
-service dhcpcd_wlan0 /system/bin/dhcpcd -BKA wlan0
-    disabled
-    oneshot
-
-service iprenew_wlan0 /system/bin/dhcpcd -n wlan0
-    disabled
-    oneshot
-
-on property:init.svc.wpa_supplicant=stopped
-    stop dhcpcd_wlan0
-
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant -Dwext -iwlan0 -W -c/data/misc/wifi/wpa_supplicant.conf
+    class main
     socket wpa_wlan0 dgram 660 wifi wifi
     group system wifi inet
     disabled
     oneshot
 
-service gadget_id /system/bin/gadget_id
+service dhcpcd_wlan0 /system/bin/dhcpcd -BKA
+    class core
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_bnep0 /system/bin/dhcpcd -B
+	class main
+	disabled
+	oneshot
+
+service iprenew_bnep0 /system/bin/dhcpcd -n
+	class main
+	disabled
+	oneshot
+
+service dhcpservice /system/bin/netcfg wlan0 dhcp
+    class main
+    oneshot
+
+
+service setapversion /system/bin/lgapversion
+    class main
+    user radio
+    group radio
+    disabled
+    oneshot
+
+service hfag /system/bin/sdptool add --channel=10 HFAG
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+service hsag /system/bin/sdptool add --channel=11 HSAG
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+service opush /system/bin/sdptool add --channel=12 OPUSH
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+service pbap /system/bin/sdptool add --channel=19 PBAP
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+service map /system/bin/sdptool add --channel=16 MAS
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+service qcom-sh /system/bin/sh /init.qcom.sh
+    class core
+    user root
+    oneshot
+
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+    class main
     user root
     disabled
     oneshot
 
-service cnd /system/bin/cnd
-    socket cnd stream 660 root radio
-    socket cne stream 660 root radio
+# Triggered by the KEY_VOLUME_DOWN+KEY_MENU keycodes
+service bugreport /system/bin/logwrapper /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
+    keycodes 114 139
+    class main
+    disabled
+    oneshot
 
-on property:persist.service.adb.enable=1
-    start gadget_id
 
-on property:persist.service.adb.enable=0
-    start gadget_id
+## Stop dhcpcd when wifi was stopped
+on property:init.svc.wpa_supplicant=stopped
+   stop dhcpcd_wlan0
 
-on property:net.usb_tethering=1
-    start gadget_id
+## start qcom-post-boot
+on property:init.svc.bootanim=stopped
+   start qcom-post-boot
 
-on property:net.usb_tethering=0
-    start gadget_id
-
-on property:dev.bootcomplete=1
+## Read BT address
+on property:service.brcm.bt.mac=*
     exec /system/bin/hwaddrs
+
+## Restart dhcpservice
+on property:dev.bootcomplete=1
+   stop dhcpservice
+   start dhcpservice
+

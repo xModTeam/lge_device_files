@@ -20,6 +20,7 @@ BOARD_USE_FROYO_LIBCAMERA := true
 
 # Arch related defines
 TARGET_BOARD_PLATFORM := msm7k
+ARCH_ARM_HAVE_VFP := true
 TARGET_ARCH_VARIANT := armv6-vfp
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
@@ -38,6 +39,17 @@ TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_USES_OLD_LIBSENSORS_HAL:=true
 TARGET_OTA_ASSERT_DEVICE := pecan
+
+# Enable OpenGL Hardware Acceleration
+USE_OPENGL_RENDERER := true
+TARGET_USE_OVERLAY := false
+TARGET_HAVE_BYPASS := false
+TARGET_USES_C2D_COMPOSITION := false
+TARGET_USES_GENLOCK := true
+TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
+BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
+BOARD_EGL_CFG := device/lge/pecan/configs/egl.cfg
+BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 
 # Audio & Bluetooth
 TARGET_PROVIDES_LIBAUDIO := true
@@ -67,22 +79,12 @@ JS_ENGINE := v8
 HTTP := chrome
 
 # USB mass storage
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/pecan/netd/UsbController.cpp
-BOARD_HAS_SDCARD_INTERNAL := true
-BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
-
-# RADIO
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-TARGET_SF_NEEDS_REAL_DIMENSIONS := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
 # ICS Stuff 
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_GLOBAL_CFLAGS += -DCHARGERMODE_CMDLINE_NAME='"lge.reboot"' -DCHARGERMODE_CMDLINE_VALUE='"pwroff"'
 
-# Graphics
-BOARD_EGL_CFG := device/lge/pecan/configs/egl.cfg
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
@@ -90,16 +92,27 @@ BOARD_PROVIDES_LIBRIL := true
 #Nedeed for LGPECAN sensors 
 COMMON_GLOBAL_CFLAGS += -DUSE_LGE_ALS_DUMMY
 
-# WiFI
-WPA_SUPPLICANT_VERSION := VER_0_6_X
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-BOARD_WLAN_DEVICE := bcm4329
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wireless.ko"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/system/etc/wl/nvram.txt"
-WIFI_DRIVER_MODULE_NAME := wireless
-WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
-WIFI_DRIVER_FW_AP_PATH := "/system/etc/wl/rtecdc-apsta.bin"
-WIFI_DRIVER_HAS_LGE_SOFTAP := true
+# Skia
+BOARD_USE_SKIA_LCDTEXT := true
+BOARD_FORCE_DITHERING := true
+
+ Wireless
+BOARD_WLAN_DEVICE               := bcm4329
+WIFI_DRIVER_FW_STA_PATH         := "/system/etc/wl/rtecdc.bin"
+WIFI_DRIVER_FW_AP_PATH          := "/system/etc/wl/rtecdc-apsta.bin"
+WIFI_DRIVER_MODULE_NAME         := "wireless"
+WIFI_DRIVER_MODULE_PATH         := "/system/lib/modules/wireless.ko"
+WIFI_DRIVER_MODULE_ARG          := "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
+WPA_SUPPLICANT_VERSION          := VER_0_6_X
+HOSTAPD_VERSION                 := VER_0_6_X
+WIFI_DRIVER_HAS_LGE_SOFTAP      := true
+BOARD_WEXT_NO_COMBO_SCAN        := true
+BOARD_WPA_SUPPLICANT_DRIVER     := WEXT
+
+# FM Radio
+BOARD_FM_DEVICE := bcm4329
+BOARD_HAVE_FM_RADIO := true
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 #Prepare for new BootAnimation
 TARGET_BOOTANIMATION_NAME := vertical-240x320
@@ -114,6 +127,11 @@ TARGET_PREBUILT_KERNEL := device/lge/pecan/prebuilt/zImage
 BOARD_KERNEL_BASE := 0x02808000
 BOARD_KERNEL_CMDLINE := mem=215M console=ttyMSM2,115200n8 androidboot.hardware=pecan
 BOARD_PAGE_SIZE := 0x00000800
+
+# Command line for charging mode
+BOARD_CHARGING_CMDLINE_NAME := "lge.reboot"
+BOARD_CHARGING_CMDLINE_VALUE := "pwroff"
+BOARD_USES_RECOVERY_CHARGEMODE := false
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
