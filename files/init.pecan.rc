@@ -28,6 +28,8 @@ on boot
     write /sys/kernel/mm/ksm/sleep_millisecs 1500
     write /sys/kernel/mm/ksm/pages_to_scan 256
 
+echo 1 > /sys/kernel/mm/ksm/run
+
 
 ## LGE's bluetooth stuff
 # bluetooth permissions
