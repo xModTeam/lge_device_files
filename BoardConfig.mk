@@ -42,7 +42,6 @@ TARGET_OTA_ASSERT_DEVICE := pecan
 
 # Enable OpenGL Hardware Acceleration
 USE_OPENGL_RENDERER := true
-USE_OPENGL_RENDERER := true
 TARGET_USE_OVERLAY := false
 TARGET_HAVE_BYPASS := false
 TARGET_USES_C2D_COMPOSITION := false
