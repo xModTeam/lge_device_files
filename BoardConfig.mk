@@ -72,14 +72,8 @@ BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/pecan/netd/UsbController.cpp
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
-# RADIO
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-TARGET_SF_NEEDS_REAL_DIMENSIONS := true
-
 # ICS Stuff 
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_GLOBAL_CFLAGS += -DCHARGERMODE_CMDLINE_NAME='"lge.reboot"' -DCHARGERMODE_CMDLINE_VALUE='"pwroff"'
 
 # Graphics
 BOARD_EGL_CFG := device/lge/pecan/configs/egl.cfg
@@ -94,17 +88,23 @@ COMMON_GLOBAL_CFLAGS += -DUSE_LGE_ALS_DUMMY
 BOARD_USE_SKIA_LCDTEXT := true
 BOARD_FORCE_DITHERING := true
 
-# WiFI
-WPA_SUPPLICANT_VERSION := VER_0_6_X
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-BOARD_WLAN_DEVICE := bcm4329
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wireless.ko"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/system/etc/wl/nvram.txt"
-WIFI_DRIVER_MODULE_NAME := wireless
-WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
-WIFI_DRIVER_FW_AP_PATH := "/system/etc/wl/rtecdc-apsta.bin"
-BOARD_WEXT_NO_COMBO_SCAN := true
-WIFI_DRIVER_HAS_LGE_SOFTAP := true
+ Wireless
+BOARD_WLAN_DEVICE               := bcm4329
+WIFI_DRIVER_FW_STA_PATH         := "/system/etc/wl/rtecdc.bin"
+WIFI_DRIVER_FW_AP_PATH          := "/system/etc/wl/rtecdc-apsta.bin"
+WIFI_DRIVER_MODULE_NAME         := "wireless"
+WIFI_DRIVER_MODULE_PATH         := "/system/lib/modules/wireless.ko"
+WIFI_DRIVER_MODULE_ARG          := "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
+WPA_SUPPLICANT_VERSION          := VER_0_6_X
+HOSTAPD_VERSION                 := VER_0_6_X
+WIFI_DRIVER_HAS_LGE_SOFTAP      := true
+BOARD_WEXT_NO_COMBO_SCAN        := true
+BOARD_WPA_SUPPLICANT_DRIVER     := WEXT
+
+# FM Radio
+BOARD_FM_DEVICE := bcm4329
+BOARD_HAVE_FM_RADIO := true
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 #Prepare for new BootAnimation
 TARGET_BOOTANIMATION_NAME := vertical-240x320
@@ -119,6 +119,11 @@ TARGET_PREBUILT_KERNEL := device/lge/pecan/prebuilt/zImage
 BOARD_KERNEL_BASE := 0x02808000
 BOARD_KERNEL_CMDLINE := mem=215M console=ttyMSM2,115200n8 androidboot.hardware=pecan
 BOARD_PAGE_SIZE := 0x00000800
+
+# Command line for charging mode
+BOARD_CHARGING_CMDLINE_NAME := "lge.reboot"
+BOARD_CHARGING_CMDLINE_VALUE := "pwroff"
+BOARD_USES_RECOVERY_CHARGEMODE := false
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
