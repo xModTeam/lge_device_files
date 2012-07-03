@@ -1,4 +1,4 @@
- Video editor (5MB)
+# Video editor (5MB)
 app/VideoEditor.apk
 lib/libvideoeditor_jni.so
 lib/libvideoeditorplayer.so
