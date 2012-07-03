@@ -102,3 +102,15 @@ media/audio/ringtones/Enter_the_Nexus.ogg
 media/audio/ringtones/Nairobi.ogg
 media/audio/ringtones/Nassau.ogg
 media/audio/ringtones/Safari.ogg
+
+# Ringtones > 100KB, Total: 4MB
+media/audio/ringtones/Silmarillia.ogg
+media/audio/ringtones/Gigolo.ogg
+media/audio/ringtones/House_of_house.ogg
+media/audio/ringtones/Boxbeat.ogg
+media/audio/ringtones/Bongo.ogg
+media/audio/ringtones/Sceptrum.ogg
+media/audio/ringtones/Themos.ogg
+media/audio/ringtones/UrsaMinor.ogg
+media/audio/ringtones/Perseus.ogg
+media/audio/ringtones/Scarabaeus.ogg
