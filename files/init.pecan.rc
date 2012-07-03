@@ -249,7 +249,7 @@ service bugreport /system/bin/logwrapper /system/bin/dumpstate -d -v -o /sdcard/
 
 ## Stop dhcpcd when wifi was stopped
 on property:init.svc.wpa_supplicant=stopped
-   stop dhcpcd_wlan0
+   stop dhcpcd_wlan0_wlan0
 
 ## start qcom-post-boot
 on property:init.svc.bootanim=stopped
