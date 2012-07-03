@@ -75,12 +75,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml 
 
+# Releasetools
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/releasetools/extras.sh:system/bin/extras.sh
+
 # Vold 
 PRODUCT_COPY_FILES += \
     device/lge/pecan/files/etc/vold.fstab:system/etc/vold.fstab 
 
 # Init
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/initlogo.rle:root/initlogo.rle \
     device/lge/pecan/files/init.pecan.rc:root/init.pecan.rc \
     device/lge/pecan/files/ueventd.pecan.rc:root/ueventd.pecan.rc \
     device/lge/pecan/files/init.pecan.usb.rc:root/init.pecan.usb.rc \
