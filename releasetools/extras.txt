@@ -14,9 +14,6 @@ app/MagicSmokeWallpapers.apk
 app/Galaxy4.apk
 app/PhaseBeam.apk
 
-# Boot animation: 2MB
-media/bootanimation.zip
-
 # tts/lang_pico (4MB)
 #tts/lang_pico/en-GB_kh0_sg.bin
 #tts/lang_pico/en-US_lh0_sg.bin
