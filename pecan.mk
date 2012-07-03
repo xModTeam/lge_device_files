@@ -123,5 +123,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
 
+# Camera 
+PRODUCT_COPY_FILES += \
+     device/lge/pecan/prebuilt/lib/libcamera.so:obj/lib/libcamera.so \
+     device/lge/pecan/prebuilt/lib/libcamera.so:system/lib/libcamera.so \
+
+# Misc 
+PRODUCT_COPY_FILES += \
+    device/lge/pecan/prebuilt/lib/libmemalloc.so:system/lib/libcamera.so \
 
 
