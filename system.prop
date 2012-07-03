@@ -31,6 +31,9 @@ ro.sf.lcd_density=120
 # Saves power when phone is sleep
 pm.sleep_mode=1
 
+ro.telephony.call_ring.multiple=false
+ro.telephony.call_ring.delay=3000
+
 # Graphics and performance
 ro.media.dec.jpeg.memcap=20000000
 view.fading_edge_length=8
