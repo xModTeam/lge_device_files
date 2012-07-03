@@ -11,6 +11,23 @@ app/MagicSmokeWallpapers.apk
 app/Galaxy4.apk
 app/PhaseBeam.apk
 
+# tts/lang_pico
+#tts/lang_pico/en-GB_kh0_sg.bin
+#tts/lang_pico/en-US_lh0_sg.bin
+#tts/lang_pico/en-GB_ta.bin
+#tts/lang_pico/en-US_ta.bin
+tts/lang_pico/de-DE_gl0_sg.bin
+tts/lang_pico/es-ES_ta.bin
+tts/lang_pico/fr-FR_nk0_sg.bin
+tts/lang_pico/it-IT_cm0_sg.bin
+tts/lang_pico/de-DE_ta.bin
+tts/lang_pico/es-ES_zl0_sg.bin
+tts/lang_pico/fr-FR_ta.bin
+tts/lang_pico/it-IT_ta.bin
+
+
+
+
 # from VideoPackage2
 media/video/AndroidInSpace.240p.mp4
 media/video/AndroidInSpace.480p.mp4
