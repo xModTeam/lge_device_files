@@ -22,7 +22,7 @@ $(call inherit-product, device/lge/pecan/pecan.mk)
 # Include FM-Radio stuff
 #$(call inherit-product, vendor/cm/products/bcm_fm_radio.mk)
 
-PRODUCT_NAME := pecan
+PRODUCT_NAME := cm_pecan
 PRODUCT_BRAND := lge
 PRODUCT_DEVICE := pecan
 PRODUCT_MODEL := LG-P350
@@ -35,7 +35,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="lge/pecan/pecan:2.3.7/GRI40/19C11F164C:user/release-keys" \
     PRIVATE_BUILD_DESC="pecan-user 2.3.7 GRI40 19C11F164C release-keys"
 
-PRODUCT_NAME := cm_pecan
+# Release name and versioning
 PRODUCT_RELEASE_NAME := pecan
-
+PRODUCT_VERSION_DEVICE_SPECIFIC :=
 
