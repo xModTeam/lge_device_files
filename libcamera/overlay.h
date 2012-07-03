@@ -223,7 +223,7 @@ struct overlay_module_t {
 
 struct overlay_control_device_t {
     struct hw_device_t common;
-    
+
     /* get static informations about the capabilities of the overlay engine */
     int (*get)(struct overlay_control_device_t *dev, int name);
 
@@ -232,7 +232,6 @@ struct overlay_control_device_t {
      * size and format is returned in overlay_t. */
     overlay_t* (*createOverlay)(struct overlay_control_device_t *dev,
             uint32_t w, uint32_t h, int32_t format);
-    
 #ifdef OMAP_ENHANCEMENT
      /* Overloaded function for S3D Overlay creation.  Used to load V4L2_S3D driver*/
     overlay_t* (*createOverlay_S3D)(struct overlay_control_device_t *dev,
@@ -246,12 +245,12 @@ struct overlay_control_device_t {
     /* set position and scaling of the given overlay as closely as possible.
      * if scaling cannot be performed, overlay must be centered. */
     int (*setPosition)(struct overlay_control_device_t *dev,
-            overlay_t* overlay, 
+            overlay_t* overlay,
             int x, int y, uint32_t w, uint32_t h);
 
     /* returns the actual position and size of the overlay */
     int (*getPosition)(struct overlay_control_device_t *dev,
-            overlay_t* overlay, 
+            overlay_t* overlay,
             int* x, int* y, uint32_t* w, uint32_t* h);
 
     /* sets configurable parameters for this overlay. returns an error if not
@@ -292,7 +291,7 @@ struct overlay_data_device_t {
 
     /* blocks until an overlay buffer is available and return that buffer. */
     int (*dequeueBuffer)(struct overlay_data_device_t *dev,
-		         overlay_buffer_t *buf);
+                        overlay_buffer_t *buf);
 
     /* release the overlay buffer and post it */
     int (*queueBuffer)(struct overlay_data_device_t *dev,
@@ -311,8 +310,6 @@ struct overlay_data_device_t {
 #endif
 
     int (*setFd)(struct overlay_data_device_t *dev, int fd);
-
-
 };
 
 
@@ -320,9 +317,9 @@ struct overlay_data_device_t {
 
 /** convenience API for opening and closing a device */
 
-static inline int overlay_control_open(const struct hw_module_t* module, 
+static inline int overlay_control_open(const struct hw_module_t* module,
         struct overlay_control_device_t** device) {
-    return module->methods->open(module, 
+    return module->methods->open(module,
             OVERLAY_HARDWARE_CONTROL, (struct hw_device_t**)device);
 }
 
@@ -330,9 +327,9 @@ static inline int overlay_control_close(struct overlay_control_device_t* device)
     return device->common.close(&device->common);
 }
 
-static inline int overlay_data_open(const struct hw_module_t* module, 
+static inline int overlay_data_open(const struct hw_module_t* module,
         struct overlay_data_device_t** device) {
-    return module->methods->open(module, 
+    return module->methods->open(module,
             OVERLAY_HARDWARE_DATA, (struct hw_device_t**)device);
 }
 
@@ -343,3 +340,4 @@ static inline int overlay_data_close(struct overlay_data_device_t* device) {
 __END_DECLS
 
 #endif  // ANDROID_OVERLAY_INTERFACE_H
+
