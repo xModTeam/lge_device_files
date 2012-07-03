@@ -15,6 +15,9 @@
 # proprietary side of the device
 # Inherit from those products. Most specific first
 
+PRODUCT_AAPT_CONFIG := normal ldpi
+PRODUCT_AAPT_PREF_CONFIG := ldpi
+
 $(call inherit-product-if-exists, vendor/lge/pecan/pecan-vendor.mk)
 
 # Discard inherited values and use our own instead.
@@ -73,6 +76,11 @@ PRODUCT_COPY_FILES += \
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml 
+    PRODUCT_PACKAGES += \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers \
+    librs_jni
 
 # Releasetools
 PRODUCT_COPY_FILES += \
