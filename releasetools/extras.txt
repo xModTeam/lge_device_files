@@ -4,7 +4,7 @@ lib/libvideoeditor_jni.so
 lib/libvideoeditorplayer.so
 
 # RomManager
-app/RomManager.apk
+# app/RomManager.apk
 
 # LiveWallpapers
 app/MagicSmokeWallpapers.apk
