@@ -114,3 +114,7 @@ media/audio/ringtones/Themos.ogg
 media/audio/ringtones/UrsaMinor.ogg
 media/audio/ringtones/Perseus.ogg
 media/audio/ringtones/Scarabaeus.ogg
+
+
+# Boot animation: 2MB
+media/bootanimation.zip
