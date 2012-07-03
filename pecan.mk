@@ -43,8 +43,6 @@ PRODUCT_PACKAGES += \
 # Apps
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
-    LiveWallpapers \
-    LiveWallpapersPicker \
     FM 
 
 # Other
