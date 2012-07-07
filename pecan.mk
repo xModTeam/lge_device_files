@@ -92,7 +92,7 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/initlogo.rle:root/initlogo.rle \
+    $(LOCAL_PATH)
     device/lge/pecan/files/init.pecan.rc:root/init.pecan.rc \
     device/lge/pecan/files/ueventd.pecan.rc:root/ueventd.pecan.rc \
     device/lge/pecan/files/init.pecan.usb.rc:root/init.pecan.usb.rc \
